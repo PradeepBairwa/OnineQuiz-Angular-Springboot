@@ -21,6 +21,14 @@
      <!-- <mat-icon>register</mat-icon> -->
      Register
     </a>
+    <!-- <button  style="margin: 50px;"
+    *ngIf="isLoggedIn&&login.getUser().username=='KaleenBhaiiya'"
+     mat-icon-button class="example-icon ml20" 
+     routerLink="/signup"
+     aria-label="Example icon-button with share icon">
+     
+    ADD ADMIN
+   </button> -->
     <button  style="margin: 50px;"
     *ngIf="isLoggedIn"
      mat-icon-button class="example-icon ml20" 
@@ -29,7 +37,8 @@
      
     {{login.getUser().username}}
    </button>
-    <a (click)="logout()"
+    <a style="margin: 50px;"
+    (click)="logout()"
      *ngIf="isLoggedIn"
       mat-icon-button class="example-icon mr20" aria-label="Example icon-button with share icon">
      <!-- <mat-icon>register</mat-icon> -->

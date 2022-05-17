@@ -43,6 +43,8 @@ import { InstructionsComponent } from './pages/user/instructions/instructions.co
 import { StartComponent } from './pages/user/start/start.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { UserProfileComponent } from './pages/user/user-profile/user-profile.component';
+import { HistoryComponent } from './pages/user/history/history.component';
+import { AddAdminComponent } from './pages/admin/add-admin/add-admin.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,7 +70,9 @@ import { UserProfileComponent } from './pages/user/user-profile/user-profile.com
     LoadQuizComponent,
     InstructionsComponent,
     StartComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    HistoryComponent,
+    AddAdminComponent
     
   ],
   imports: [
