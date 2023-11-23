@@ -1,0 +1,17 @@
+cloud:
+  aws:
+    credentials:
+      access-key: AKIAXXWQXQNAXPHZNFU7
+      secret-key: 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
+    region:
+      static: eu-north-1
+    stack:
+      auto: false
+
+application:
+  bucket:
+    name: onlinequizresults
+
+#spring:#  servlet:#    multipart:#      enabled: true
+#      file-size-threshold: 2MB#      max-file-size: 5MB#      max-request-size: 10MB
+      server:  port: 9990     

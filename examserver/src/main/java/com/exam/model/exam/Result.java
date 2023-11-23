@@ -1,5 +1,8 @@
 package com.exam.model.exam;
 
+import java.sql.Date;
+import java.time.LocalDateTime;
+
 import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,6 +25,7 @@ public class Result {
 	private int attempted;
 	private int correctAnswers;
 	private int marksGot;
+	private LocalDateTime date;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Quiz quiz;
@@ -32,6 +36,14 @@ public class Result {
 	
 	Result(){}
 
+	public LocalDateTime getDate() {
+		return date;
+	}
+
+
+	public void setDate(LocalDateTime now) {
+		this.date = now;
+	}
 
 	public long getrId() {
 		return rId;
@@ -93,12 +105,13 @@ public class Result {
 	}
 
 
-	public Result(long rId, int attempted, int correctAnswers, int marksGot) {
+	public Result(long rId, int attempted, int correctAnswers, int marksGot,LocalDateTime date) {
 		super();
 		this.rId = rId;
 		this.attempted = attempted;
 		this.correctAnswers = correctAnswers;
 		this.marksGot = marksGot;
+		this.date=date;
 	}
 	
 	
