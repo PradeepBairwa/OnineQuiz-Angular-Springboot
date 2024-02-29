@@ -13,6 +13,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.exam.model.User;
@@ -49,6 +50,8 @@ public class ResultServiceImpl implements ResultService {
 
 	
 	@Override
+
+	@org.springframework.transaction.annotation.Transactional(isolation = Isolation.READ_COMMITTED)
 	public Result addResult(Result result) throws IOException {
 		// TODO Auto-generated method stub
 		Result submittefResult =resultRepository.save(result);

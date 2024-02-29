@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.exam.model.User;
@@ -47,13 +48,21 @@ public class ResultController {
 	@Autowired
 	private S3StorageService s3StorageService;
 	
+	@Autowired
+	private RestTemplate restTemplate;
+	
 	@PostMapping("/")
 	public Result addResult(@RequestBody Result result) throws IOException, InterruptedException {
 		Result submitted= this.resultService.addResult(result);
-		Thread.sleep(20000);
+		
 		long  rId=submitted.getrId();
-//		long  rId=82;
-		Optional<Result> result2=resultRepository.findById(rId);
+//		final String url="http://localhost:9990/result/"+rId;
+//		long  rId=94;
+//		Result result2=resultServiceImpl.getResult(rId);
+		final String url = "http://localhost:9990/result/" + rId;
+
+	    // Make an HTTP GET request to getResult endpoint
+	    Result result2 = restTemplate.getForObject(url, Result.class);
 		ByteArrayInputStream s3ResultPdf= resultServiceImpl.createResultPdf(submitted.getrId());
 		MultipartFile multipartFile = new MockMultipartFile(
                 "file",         // Parameter name (you can change this if needed)
